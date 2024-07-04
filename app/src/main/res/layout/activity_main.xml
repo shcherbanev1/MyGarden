@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         style="@style/Widget.App.BottomNavigationView"
         app:elevation="8dp"
-        app:itemIconSize="36dp"
+        app:itemIconSize="42dp"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/main_menu" />
