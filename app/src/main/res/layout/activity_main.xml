@@ -20,7 +20,10 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelVisibilityMode="selected"
+        app:itemIconTint="@color/green"
+        app:itemTextColor="@color/green"
+        app:itemIconSize="36dp"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/main_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
