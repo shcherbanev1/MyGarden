@@ -46,7 +46,7 @@
         tools:text="  Название растения  "
         android:textColor="@color/white"
         android:background="@drawable/rounded_edit_text"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_marginBottom="12dp"
         app:layout_constraintEnd_toEndOf="@+id/plant_img"
         app:layout_constraintStart_toStartOf="@id/plant_img"
