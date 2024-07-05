@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDev4" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -110,7 +110,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tvVersionNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -118,6 +118,6 @@
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/tvVersion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
