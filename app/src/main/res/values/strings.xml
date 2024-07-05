@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyGarden</string>
+    <string name="MyPlants">Мои растения</string>
+    <string name="Add">Добавить</string>
+    <string name="Profile">Профиль</string>
+    <string name="Guide">Справочник</string>
+    <string name="Settings">Настройки</string>
+    <string name="Information">Справка</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
