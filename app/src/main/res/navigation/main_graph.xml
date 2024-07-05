@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/plantFragment"
-        android:name="ru.itis.mygarden.PlantFragment"
+        android:name="ru.itis.mygarden.fragments.plant.PlantFragment"
         android:label="fragment_plant"
         tools:layout="@layout/fragment_plant" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="ru.itis.mygarden.AddFragment"
+        android:name="ru.itis.mygarden.fragments.add.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/guideFragment"
-        android:name="ru.itis.mygarden.GuideFragment"
+        android:name="ru.itis.mygarden.fragments.guide.GuideFragment"
         android:label="fragment_guide"
         tools:layout="@layout/fragment_guide" >
         <action
@@ -34,12 +34,12 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="ru.itis.mygarden.InfoFragment"
+        android:name="ru.itis.mygarden.fragments.info.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ru.itis.mygarden.ProfileFragment"
+        android:name="ru.itis.mygarden.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="ru.itis.mygarden.SettingsFragment"
+        android:name="ru.itis.mygarden.fragments.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action

@@ -1,18 +1,18 @@
-package ru.itis.mygarden
+package ru.itis.mygarden.fragments.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import ru.itis.mygarden.databinding.FragmentAddBinding
-import ru.itis.mygarden.databinding.FragmentPlantBinding
+import ru.itis.mygarden.R
+import ru.itis.mygarden.databinding.FragmentProfileBinding
 
-class AddFragment : Fragment(R.layout.fragment_add) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    private var binding: FragmentAddBinding? = null
+    private var binding: FragmentProfileBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAddBinding.bind(view)
+        binding = FragmentProfileBinding.bind(view)
     }
 
     override fun onDestroyView() {

@@ -38,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.play.services.maps)
     val nav_version = "2.7.7"
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")

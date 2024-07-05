@@ -1,18 +1,18 @@
-package ru.itis.mygarden
+package ru.itis.mygarden.fragments.plant
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import ru.itis.mygarden.databinding.FragmentGuideBinding
+import ru.itis.mygarden.R
 import ru.itis.mygarden.databinding.FragmentPlantBinding
 
-class GuideFragment : Fragment(R.layout.fragment_guide) {
+class PlantFragment : Fragment(R.layout.fragment_plant) {
 
-    private var binding: FragmentGuideBinding? = null
+    private var binding: FragmentPlantBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentGuideBinding.bind(view)
+        binding = FragmentPlantBinding.bind(view)
     }
 
     override fun onDestroyView() {
