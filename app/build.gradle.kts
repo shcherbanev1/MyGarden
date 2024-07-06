@@ -16,9 +16,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildFeatures {
-        viewBinding = true
-    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -38,11 +36,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.play.services.maps)
-    val nav_version = "2.7.7"
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
