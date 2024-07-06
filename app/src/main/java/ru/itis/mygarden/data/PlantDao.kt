@@ -1,4 +1,4 @@
-package ru.itis.mygarden
+package ru.itis.mygarden.data
 
 import androidx.room.Dao
 import androidx.room.Delete

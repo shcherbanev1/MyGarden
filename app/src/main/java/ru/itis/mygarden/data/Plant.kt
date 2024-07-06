@@ -1,4 +1,4 @@
-package ru.itis.mygarden
+package ru.itis.mygarden.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

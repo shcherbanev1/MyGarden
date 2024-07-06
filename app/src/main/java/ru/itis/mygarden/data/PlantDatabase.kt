@@ -1,4 +1,4 @@
-package ru.itis.mygarden
+package ru.itis.mygarden.data
 
 import android.content.Context
 import androidx.room.Database
