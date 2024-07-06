@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/plant_img"
+        android:layout_width="320dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        tools:src="@drawable/tool_plant" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/pour"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:layout_constraintEnd_toEndOf="@id/plant_img"
+        app:layout_constraintTop_toTopOf="@id/plant_img"
+        android:background="@color/orange"
+        android:src="@drawable/water"
+        />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:layout_constraintEnd_toStartOf="@id/pour"
+        app:layout_constraintTop_toTopOf="@id/plant_img"
+        android:background="@color/green"
+
+        android:src="@drawable/fertilizer"
+        />
+
+    <TextView
+        android:id="@+id/plant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="  Название растения  "
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_edit_text"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/plant_img"
+        app:layout_constraintStart_toStartOf="@id/plant_img"
+        app:layout_constraintBottom_toBottomOf="@+id/plant_img"
+        tools:layout_editor_absoluteX="139dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
