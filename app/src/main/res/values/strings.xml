@@ -6,7 +6,6 @@
     <string name="Guide">Справочник</string>
     <string name="Settings">Настройки</string>
     <string name="Information">Справка</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Search">"  Поиск"</string>
     <string name="AddImg">Добавить изображение</string>
@@ -20,4 +19,12 @@
     <string name="Counts">раз в&#160;</string>
     <string name="SunType">Какой свет любит?</string>
     <string name="Create">Создать</string>
+    <string name="Developers">Разработчики</string>
+    <string name="hyperlinkDev1"><a href="https://github.com/Almaz021">Almaz021</a></string>
+    <string name="hyperlinkDev2"><a href="https://github.com/shcherbanev1">shcherbanev1</a></string>
+    <string name="hyperlinkDev3"><a href="https://github.com/StrelnikovaL">StrelnikovaL</a></string>
+    <string name="hyperlinkDev4"><a href="https://github.com/IMART0">IMART0</a></string>
+    <string name="hyperlinkDev5"><a href="https://github.com/pashtevlenti">pashtevlenti</a></string>
+    <string name="Version">version:&#160;</string>
+    <string name="versionId">0.0.1</string>
 </resources>
