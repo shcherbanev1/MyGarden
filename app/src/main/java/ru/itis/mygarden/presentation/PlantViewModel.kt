@@ -1,4 +1,4 @@
-package ru.itis.mygarden.data
+package ru.itis.mygarden.presentation
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -6,6 +6,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import ru.itis.mygarden.data.Plant
+import ru.itis.mygarden.data.PlantDao
+import ru.itis.mygarden.data.PlantDatabase
 import java.lang.ref.WeakReference
 
 class PlantViewModel(context: Context) : ViewModel() {

@@ -1,4 +1,4 @@
-package ru.itis.mygarden.data
+package ru.itis.mygarden.presentation
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
