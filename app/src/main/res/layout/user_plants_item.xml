@@ -27,17 +27,6 @@
         android:background="@color/orange"
         android:src="@drawable/water"
         />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:layout_constraintEnd_toStartOf="@id/pour"
-        app:layout_constraintTop_toTopOf="@id/plant_img"
-        android:background="@color/green"
-
-        android:src="@drawable/fertilizer"
-        />
 
     <TextView
         android:id="@+id/plant_name"
@@ -46,7 +35,7 @@
         tools:text="  Название растения  "
         android:textColor="@color/white"
         android:background="@drawable/rounded_edit_text"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_marginBottom="12dp"
         app:layout_constraintEnd_toEndOf="@+id/plant_img"
         app:layout_constraintStart_toStartOf="@id/plant_img"
