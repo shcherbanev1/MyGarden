@@ -8,6 +8,8 @@
     <string name="Information">Справка</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Search">"  Поиск"</string>
+    <string name="UserName">Имя пользователя:</string>
+    <string name="theNumberOfYourPlants">Количество ваших растений:</string>
     <string name="watering">Полить</string>
     <string name="before_watering">до полива</string>
     <string name="light">свет</string>
