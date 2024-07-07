@@ -27,17 +27,6 @@
         android:background="@color/orange"
         android:src="@drawable/water"
         />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:layout_constraintEnd_toStartOf="@id/pour"
-        app:layout_constraintTop_toTopOf="@id/plant_img"
-        android:background="@color/green"
-
-        android:src="@drawable/fertilizer"
-        />
 
     <TextView
         android:id="@+id/plant_name"
