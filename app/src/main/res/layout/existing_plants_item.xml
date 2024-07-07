@@ -16,18 +16,6 @@
         app:shapeAppearanceOverlay="@style/roundedImageView"
         tools:src="@drawable/tool_plant" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/pour"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:layout_constraintEnd_toEndOf="@id/plant_img"
-        app:layout_constraintTop_toTopOf="@id/plant_img"
-        android:background="@color/orange"
-        android:src="@drawable/water"
-        />
-
     <TextView
         android:id="@+id/plant_name"
         android:layout_width="wrap_content"
@@ -35,11 +23,29 @@
         tools:text="  Название растения  "
         android:textColor="@color/white"
         android:background="@drawable/rounded_edit_text"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:layout_marginBottom="12dp"
         app:layout_constraintEnd_toEndOf="@+id/plant_img"
         app:layout_constraintStart_toStartOf="@id/plant_img"
         app:layout_constraintBottom_toBottomOf="@+id/plant_img"
         tools:layout_editor_absoluteX="139dp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_adding"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:foreground="@drawable/button_watering"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/plant_img"
+        android:layout_margin="10dp"/>
+
+    <ImageView
+        android:layout_height="24dp"
+        android:layout_width="24dp"
+        app:layout_constraintTop_toTopOf="@id/button_adding"
+        android:src="@drawable/plus_item"
+        app:layout_constraintBottom_toBottomOf="@id/button_adding"
+        app:layout_constraintStart_toStartOf="@id/button_adding"
+        app:layout_constraintEnd_toEndOf="@id/button_adding"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

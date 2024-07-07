@@ -3,7 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark_green"
     tools:context=".fragments.add.AddFragment">
+
+    <EditText
+        android:id="@+id/entering_text"
+        android:layout_width="340dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_edit_text"
+        android:hint="@string/enter_name"
+        android:maxLength="25"
+        android:paddingStart="12dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/existing_plants_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/existing_plants_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_adding"
+        app:layout_constraintTop_toBottomOf="@id/entering_text"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_adding"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="8dp"
+        android:foreground="@drawable/button_watering"
+        app:layout_constraintBottom_toTopOf="@+id/text_adding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/button_adding"
+        android:src="@drawable/plus_item"
+        app:layout_constraintBottom_toBottomOf="@id/button_adding"
+        app:layout_constraintStart_toStartOf="@id/button_adding"
+        app:layout_constraintEnd_toEndOf="@id/button_adding"
+        />
+    <TextView
+        android:id="@+id/text_adding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_plant"
+        android:paddingBottom="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_search_24"
+        app:layout_constraintEnd_toEndOf="@id/entering_text"
+        app:layout_constraintTop_toTopOf="@id/entering_text"
+        app:layout_constraintBottom_toBottomOf="@id/entering_text"
+        android:layout_marginEnd="12dp"/>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
