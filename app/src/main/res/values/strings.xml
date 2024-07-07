@@ -10,6 +10,22 @@
     <string name="Search">"  Поиск"</string>
     <string name="UserName">Имя пользователя:</string>
     <string name="theNumberOfYourPlants">Количество ваших растений:</string>
+    <string name="watering">Полить</string>
+    <string name="before_watering">до полива</string>
+    <string name="light">свет</string>
+    <string name="make_plant">Создать своё</string>
+    <string name="enter_name">Введите название растения</string>
+    <string name="AddImg">Добавить изображение</string>
+    <string name="Name">Название</string>
+    <string name="PlantName">Введите имя растения</string>
+    <string name="CreatePlant">Создание растения</string>
+    <string name="Description">Описание</string>
+    <string name="PlantDescription">Введите описание</string>
+    <string name="WateringFrequency">Как часто надо поливать?</string>
+    <string name="Water">Поливать</string>
+    <string name="Counts">раз в&#160;</string>
+    <string name="SunType">Какой свет любит?</string>
+    <string name="Create">Создать</string>
     <string name="Developers">Разработчики</string>
     <string name="hyperlinkDev1"><a href="https://github.com/Almaz021">Almaz021</a></string>
     <string name="hyperlinkDev2"><a href="https://github.com/shcherbanev1">shcherbanev1</a></string>
