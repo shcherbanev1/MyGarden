@@ -12,7 +12,9 @@ import ru.itis.mygarden.data.PlantDatabase
 import java.lang.ref.WeakReference
 
 class PlantViewModel(context: Context) : ViewModel() {
+
     private val contextRef: WeakReference<Context> = WeakReference(context)
+
     private val plantDao: PlantDao = contextRef.get()?.let {
         PlantDatabase.getDataBase(it).plantDao()
     } ?: throw IllegalStateException("Context is null")
