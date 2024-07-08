@@ -10,7 +10,7 @@ import ru.itis.mygarden.databinding.UserPlantsItemBinding
 class PlantAdapter(
     private val plants: List<Plant>,
     private val glide: RequestManager,
-    private val onClick: Unit
+    private val onClick:(Plant) -> Unit
     ): RecyclerView.Adapter<PlantHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantHolder {
             return PlantHolder(

@@ -9,7 +9,7 @@ import ru.itis.mygarden.databinding.UserPlantsItemBinding
 class PlantHolder(
     private val glide: RequestManager,
     private val binding: UserPlantsItemBinding,
-    private val onClick: Unit
+    private val onClick: (Plant) -> Unit
     ) : ViewHolder(binding.root)
     {
         fun onBind(plant: Plant) {
@@ -19,6 +19,9 @@ class PlantHolder(
                     .load(plant.imgSource)
                     .error(R.drawable.not_found_plant)
                     .into(plantImg)
+                root.setOnClickListener{
+                    onClick(plant)
+                }
             }
         }
 }
