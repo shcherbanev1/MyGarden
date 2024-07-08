@@ -8,7 +8,7 @@ import ru.itis.mygarden.data.Plant
 import ru.itis.mygarden.databinding.UserPlantsItemBinding
 
 class PlantAdapter(
-    private val plants: List<Plant>,
+    private var plants: List<Plant>,
     private val glide: RequestManager,
     private val onClick:(Plant) -> Unit
     ): RecyclerView.Adapter<PlantHolder>() {
@@ -29,4 +29,8 @@ class PlantAdapter(
         override fun onBindViewHolder(holder: PlantHolder, position: Int) {
             holder.onBind(plants[position])
         }
+
+    fun setPlantsList(newPlants:List<Plant>) {
+        plants = newPlants
+    }
 }
