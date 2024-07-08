@@ -1,6 +1,7 @@
 package ru.itis.mygarden.fragments.info
 
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.View
 import ru.itis.mygarden.R
@@ -13,6 +14,15 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentInfoBinding.bind(view)
+
+        binding?.run {
+            tvDev1.movementMethod = LinkMovementMethod.getInstance()
+            tvDev2.movementMethod = LinkMovementMethod.getInstance()
+            tvDev3.movementMethod = LinkMovementMethod.getInstance()
+            tvDev4.movementMethod = LinkMovementMethod.getInstance()
+            tvDev5.movementMethod = LinkMovementMethod.getInstance()
+
+        }
     }
 
     override fun onDestroyView() {
