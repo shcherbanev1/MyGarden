@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_plantFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_plantFragment_to_myPlantFragment"
+            app:destination="@id/myPlantFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -55,4 +58,9 @@
             android:id="@+id/action_settingsFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/myPlantFragment"
+        android:name="ru.itis.mygarden.fragments.myPlant.MyPlantFragment"
+        android:label="fragment_my_plant"
+        tools:layout="@layout/fragment_my_plant" />
 </navigation>
