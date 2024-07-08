@@ -12,6 +12,7 @@ import ru.itis.mygarden.R
 import ru.itis.mygarden.data.Plant
 import ru.itis.mygarden.databinding.FragmentPlantBinding
 import ru.itis.mygarden.fragments.add.AddFragment
+import ru.itis.mygarden.fragments.myPlant.MyPlantFragment
 import ru.itis.mygarden.presentation.PlantViewModel
 import ru.itis.mygarden.presentation.PlantViewModelFactory
 
@@ -42,6 +43,15 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
             println(1)
             initAdapter()
         }
+        initViews()
+    }
+
+    private fun initViews() {
+        binding?.run {
+            addButton.setOnClickListener {
+                findNavController().navigate(resId = R.id.action_plantFragment_to_addFragment)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -56,8 +66,8 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
                 glide = Glide.with(this),
                 onClick = {
                     findNavController().navigate(
-                        resId = R.id.action_plantFragment_to_addFragment,
-                        args = AddFragment.bundle(id = it.id)
+                        resId = R.id.action_plantFragment_to_myPlantFragment,
+                        args = MyPlantFragment.bundle(id = it.id)
                     )
                 }
             )
