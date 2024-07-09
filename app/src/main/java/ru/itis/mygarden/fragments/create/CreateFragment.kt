@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.itis.mygarden.R
 import ru.itis.mygarden.data.Plant
@@ -91,7 +92,23 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
     }
 
     private fun makeNewPlant() {
-        val id = Int.MAX_VALUE
+        viewModel = ViewModelProvider(
+            this,
+            PlantViewModelFactory(requireContext())
+        )[PlantViewModel::class.java]
+
+        var id = 0
+
+        lifecycleScope.launch {
+            val list = viewModel.getAllPlants()
+            for (i in list) {
+                if (id < i.id) {
+                    id = i.id
+                }
+            }
+        }
+
+        id++
         val name = binding!!.etName.text.toString()
         val description = binding!!.evDescription.text.toString()
         var sunlight = ""
@@ -119,10 +136,6 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
 
         println("TEST TAG: $newPlant")
 
-        viewModel = ViewModelProvider(
-            this,
-            PlantViewModelFactory(requireContext())
-        )[PlantViewModel::class.java]
 
         lifecycleScope.launch {
             viewModel.addPlant(newPlant)
