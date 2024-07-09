@@ -10,6 +10,8 @@ import ru.itis.mygarden.data.Plant
 import ru.itis.mygarden.data.PlantDao
 import ru.itis.mygarden.data.PlantDatabase
 import java.lang.ref.WeakReference
+import ru.itis.mygarden.data.api.ApiPlantInfoHandler
+import ru.itis.mygarden.exception.PlantNotFoundException
 
 class PlantViewModel(context: Context) : ViewModel() {
 
@@ -29,6 +31,16 @@ class PlantViewModel(context: Context) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             plantDao.insertPlant(plant)
         }
+    }
+
+    suspend fun addPlantFromApi(plantName: String): Boolean {
+            return try {
+                val handler = ApiPlantInfoHandler(plantName)
+                addPlant(handler.fetchPlantFromJson())
+                true
+            } catch (e: PlantNotFoundException) {
+                false
+            }
     }
 
     fun updatePlant(plant: Plant) {
