@@ -1,5 +1,13 @@
 package ru.itis.mygarden.fragments.myPlant
 
+import android.content.Context.MODE_PRIVATE
+import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import kotlinx.coroutines.launch
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Intent
@@ -10,7 +18,6 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import ru.itis.mygarden.MainActivity
@@ -19,10 +26,67 @@ import ru.itis.mygarden.data.NotificationReceiver
 import ru.itis.mygarden.data.Plant
 import ru.itis.mygarden.databinding.FragmentInfoBinding
 import ru.itis.mygarden.databinding.FragmentMyPlantBinding
+import ru.itis.mygarden.presentation.PlantViewModel
+import ru.itis.mygarden.presentation.PlantViewModelFactory
+import java.time.Instant
+
 
 class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
      private var binding: FragmentMyPlantBinding? = null
-    private val plant: Plant? = null
+     private val plant: Plant? = null
+    private var plantsList: List<Plant>? = null
+    private lateinit var viewModel: PlantViewModel
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentMyPlantBinding.bind(view)
+        super.onCreate(savedInstanceState)
+        val context = requireContext()
+        val sharedPreferences = context.getSharedPreferences("PlantColors", MODE_PRIVATE)
+        val id = arguments?.getInt("ARG_ID")
+        ViewModelProvider(this, PlantViewModelFactory(context)).get(PlantViewModel::class.java)
+        lifecycleScope.launch {
+           plantsList = viewModel.getAllPlants()
+        }
+        plant = plantsList?.find{it.id == id}
+        binding?.run {
+
+            var currentTime = getCurrentTimeMillis()
+            if ( currentTime > plant?.nextWateringTime!!){
+                pour.setBackgroundColor(context.getColor(R.color.orange))
+                sharedPreferences.edit()
+                    .putBoolean("${plant.id}_isWateringButtonGreen", false)
+                    .apply()
+            }
+
+            buttonWatering.setOnClickListener {
+                pour.setBackgroundColor(context.getColor(R.color.dark_green))
+                sharedPreferences.edit()
+                    .putBoolean("${plant?.id}_isWateringButtonGreen", true)
+                   .apply()
+                //viewModel.updateNextWateringTime(plant)
+            }
+            namePlantText.text = plant?.name
+            description.text = plant?.description
+            valueLight.text = plant?.sunlight
+            valueWatering.text = "${plant?.wateringFrequency}"
+            Glide.with(this@MyPlantFragment)
+                .load(plant?.imgSource)
+                .error(R.drawable.not_found_plant)
+                .into(plantImg)
+
+
+            backButton.setOnClickListener {
+                findNavController().navigate(R.id.action_myPlantFragment_to_plantFragment)
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getCurrentTimeMillis(): Long {
+        return Instant.now().toEpochMilli()
+
+    
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,4 +137,5 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
             putInt(ARG_ID, id)
         }
     }
+
 }
