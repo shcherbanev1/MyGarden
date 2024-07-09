@@ -15,9 +15,13 @@ import ru.itis.mygarden.data.PlantDatabase
 import ru.itis.mygarden.data.User
 import ru.itis.mygarden.data.UserDao
 import java.lang.ref.WeakReference
+import ru.itis.mygarden.data.api.ApiPlantInfoHandler
+import ru.itis.mygarden.exception.PlantNotFoundException
 
 class PlantViewModel(context: Context) : ViewModel() {
+
     private val contextRef: WeakReference<Context> = WeakReference(context)
+
     private val plantDao: PlantDao = contextRef.get()?.let {
         PlantDatabase.getDataBase(it).plantDao()
     } ?: throw IllegalStateException("Context is null")
@@ -62,6 +66,16 @@ class PlantViewModel(context: Context) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             plantDao.insertPlant(plant)
         }
+    }
+
+    suspend fun addPlantFromApi(plantName: String): Boolean {
+            return try {
+                val handler = ApiPlantInfoHandler(plantName)
+                addPlant(handler.fetchPlantFromJson())
+                true
+            } catch (e: PlantNotFoundException) {
+                false
+            }
     }
 
     fun updatePlant(plant: Plant) {
