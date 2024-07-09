@@ -39,7 +39,11 @@
         android:id="@+id/infoFragment"
         android:name="ru.itis.mygarden.fragments.info.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="ru.itis.mygarden.fragments.profile.ProfileFragment"
@@ -48,6 +52,9 @@
         <action
             android:id="@+id/action_profileFragment_to_guideFragment"
             app:destination="@id/guideFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPlantFragment"
