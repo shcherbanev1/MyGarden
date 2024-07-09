@@ -43,9 +43,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-
     kapt(libs.androidx.room.compiler)
-
     implementation(libs.play.services.maps)
     implementation(libs.glide)
     implementation(libs.androidx.navigation.fragment.ktx)
