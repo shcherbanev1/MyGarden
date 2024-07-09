@@ -40,6 +40,13 @@ android {
 
 dependencies {
 
+    implementation("io.ktor:ktor-client-core:2.3.0")
+    implementation("io.ktor:ktor-client-cio:2.3.0")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.0")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+
     val room_version = "2.6.1"
     val lifecycle_viewmodel_ktx_version = "2.5.1"
 
@@ -56,14 +63,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-
-    val retrofit2_version = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofit2_version")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofit2_version")
-
-    val okhttp3_version = "4.9.0"
-    implementation ("com.squareup.okhttp3:logging-interceptor:$okhttp3_version")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
