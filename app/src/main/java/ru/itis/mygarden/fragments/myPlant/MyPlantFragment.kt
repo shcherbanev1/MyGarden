@@ -21,7 +21,7 @@ import ru.itis.mygarden.databinding.FragmentInfoBinding
 import ru.itis.mygarden.databinding.FragmentMyPlantBinding
 
 class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
-     private var binding: FragmentMyPlantBinding? = null
+    private var binding: FragmentMyPlantBinding? = null
     private val plant: Plant? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

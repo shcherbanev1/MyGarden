@@ -32,7 +32,6 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         viewModel = ViewModelProvider(this, PlantViewModelFactory(context)).get(PlantViewModel::class.java)
         lifecycleScope.launch {
             plantsList = viewModel.getAllPlants()
-            println(1)
             initAdapter()
         }
         initViews()
