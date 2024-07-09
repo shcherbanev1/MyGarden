@@ -14,7 +14,7 @@
     <item
         android:id="@+id/guideFragment"
         android:title="@string/Guide"
-        android:icon="@drawable/bookicon"/>
+        android:icon="@drawable/book"/>
     <item
         android:id="@+id/settingsFragment"
         android:title="@string/Settings"
