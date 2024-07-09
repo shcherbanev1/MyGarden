@@ -89,4 +89,9 @@ class PlantViewModel(context: Context) : ViewModel() {
             plantDao.deletePlant(plant)
         }
     }
+
+    fun updateNextWateringTime(plant: Plant) {
+        plant.nextWateringTime = System.currentTimeMillis() + plant.wateringFrequency * 86400 * 1000
+    }
+
 }
