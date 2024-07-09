@@ -26,6 +26,6 @@ interface PlantDao {
     suspend fun getPlantById(id: Int): Plant?
 
     @Query("SELECT * FROM plants WHERE name = :name")
-    suspend fun getPlantByName(name: String): Plant?
+    suspend fun getPlantsByName(name: String): List<Plant>
 
 }
