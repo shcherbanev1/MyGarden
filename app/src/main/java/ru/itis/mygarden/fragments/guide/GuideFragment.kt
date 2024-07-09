@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import ru.itis.mygarden.R
 import ru.itis.mygarden.databinding.FragmentGuideBinding
 import ru.itis.mygarden.fragments.disease.Disease
+import ru.itis.mygarden.fragments.disease.DiseaseFragment
 
 class GuideFragment : Fragment(R.layout.fragment_guide) {
 
@@ -28,7 +29,8 @@ class GuideFragment : Fragment(R.layout.fragment_guide) {
                 glide = Glide.with(this),
                 onClick = {
                     findNavController().navigate(
-                        resId = R.id.action_guideFragment_to_diseaseFragment
+                        resId = R.id.action_guideFragment_to_diseaseFragment,
+                        args = DiseaseFragment.bundle(it.id)
                     )
                 }
             )
