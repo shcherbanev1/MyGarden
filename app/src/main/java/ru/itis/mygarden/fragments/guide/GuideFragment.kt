@@ -34,6 +34,9 @@ class GuideFragment : Fragment(R.layout.fragment_guide) {
                 )
             }
         )
+        binding?.run {
+            diseasesRv.adapter = adapter
+        }
     }
 
     override fun onDestroyView() {
