@@ -4,12 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
-import ru.itis.mygarden.data.Plant
 import ru.itis.mygarden.databinding.GuideItemBinding
-import ru.itis.mygarden.databinding.UserPlantsItemBinding
 import ru.itis.mygarden.fragments.disease.Disease
-import ru.itis.mygarden.fragments.plant.PlantHolder
-
 class GuideAdapter(
     private var diseases: List<Disease>,
     private val glide: RequestManager,

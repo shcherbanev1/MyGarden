@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_guideFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_guideFragment_to_diseaseFragment"
+            app:destination="@id/diseaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -63,4 +66,9 @@
         android:name="ru.itis.mygarden.fragments.myPlant.MyPlantFragment"
         android:label="fragment_my_plant"
         tools:layout="@layout/fragment_my_plant" />
+    <fragment
+        android:id="@+id/diseaseFragment"
+        android:name="ru.itis.mygarden.fragments.disease.DiseaseFragment"
+        android:label="fragment_disease"
+        tools:layout="@layout/fragment_disease" />
 </navigation>
