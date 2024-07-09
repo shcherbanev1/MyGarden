@@ -9,12 +9,13 @@ import ru.itis.mygarden.R
 import ru.itis.mygarden.databinding.FragmentGuideBinding
 import ru.itis.mygarden.fragments.disease.Disease
 import ru.itis.mygarden.fragments.disease.DiseaseFragment
+import ru.itis.mygarden.fragments.disease.DiseasesRepository
 
 class GuideFragment : Fragment(R.layout.fragment_guide) {
 
     private var binding: FragmentGuideBinding? = null
     private var adapter: GuideAdapter? = null
-    private var diseases: List<Disease>? = null
+    private var diseases: List<Disease> = DiseasesRepository.diseases
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,18 +24,16 @@ class GuideFragment : Fragment(R.layout.fragment_guide) {
     }
 
     private fun initAdapter() {
-        adapter = diseases?.let {
-            GuideAdapter(
-                diseases = it,
-                glide = Glide.with(this),
-                onClick = {
-                    findNavController().navigate(
-                        resId = R.id.action_guideFragment_to_diseaseFragment,
-                        args = DiseaseFragment.bundle(it.id)
-                    )
-                }
-            )
-        }
+        adapter = GuideAdapter(
+            diseases = diseases,
+            glide = Glide.with(this),
+            onClick = {
+                findNavController().navigate(
+                    resId = R.id.action_guideFragment_to_diseaseFragment,
+                    args = DiseaseFragment.bundle(it.id)
+                )
+            }
+        )
     }
 
     override fun onDestroyView() {
