@@ -7,19 +7,22 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import ru.itis.mygarden.R
 import ru.itis.mygarden.databinding.FragmentInfoBinding
-import ru.itis.mygarden.fragments.profile.SharedViewModel
 
-@Suppress("DEPRECATION")
 class InfoFragment : Fragment(R.layout.fragment_info) {
 
     private var binding: FragmentInfoBinding? = null
-    private lateinit var viewModelTransition: SharedViewModel
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentInfoBinding.bind(view)
 
-        val data = Bundle().apply { putString("ARGUMENT_MESSAGE", "") }
+
+        val uri = arguments?.getString("Uri_string")
+        val name = arguments?.getString("Edit_text")
+        val bundle = Bundle()
+        bundle.putString("Uri_string",uri)
+        bundle.putString("Edit_text",name)
 
 
         binding?.run {
@@ -31,11 +34,8 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
 
 
             exitToProfile.setOnClickListener{
-//               findNavController().navigate(resId = R.id.action_infoFragment_to_profileFragment)
-             viewModelTransition.bundleFromFragmentBToFragmentA.value = data
-                requireActivity().onBackPressed()
+               findNavController().navigate(resId = R.id.action_infoFragment_to_profileFragment,bundle)
             }
-//       viewModelTransition.bundleFromFragmentBToFragmentA.value = data потыкав, я нашел что вылетает, когда вот эта строчка появляется
         }
 
 

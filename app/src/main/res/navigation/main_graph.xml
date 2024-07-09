@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_plantFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_plantFragment_to_myPlantFragment"
+            app:destination="@id/myPlantFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -29,8 +32,8 @@
         android:label="fragment_guide"
         tools:layout="@layout/fragment_guide" >
         <action
-            android:id="@+id/action_guideFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_guideFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -54,12 +57,8 @@
             app:destination="@id/infoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="ru.itis.mygarden.fragments.settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
-        <action
-            android:id="@+id/action_settingsFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-    </fragment>
+        android:id="@+id/myPlantFragment"
+        android:name="ru.itis.mygarden.fragments.myPlant.MyPlantFragment"
+        android:label="fragment_my_plant"
+        tools:layout="@layout/fragment_my_plant" />
 </navigation>
