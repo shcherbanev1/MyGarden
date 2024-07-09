@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,8 +27,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var binding: FragmentProfileBinding? = null
     var SELECT_PICTURE: Int = 1234
     private lateinit var viewModel: PlantViewModel
-    private lateinit var viewModelTransition: SharedViewModel
     var selectedImageUri : Uri? = null
+
+    var uri : String? = null
+    var name : String? = null
+    val bundle = Bundle()
 
     var flag = false
 
@@ -36,16 +40,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.bind(view)
 
 
-        viewModelTransition = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-
-        viewModelTransition.bundleFromFragmentBToFragmentA.observe(viewLifecycleOwner, Observer {
-            val message = it.getString("ARGUMENT_MESSAGE", "")
-            Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
-        })
-//        класс SharedViewModel и все что связано с ним и классе InfoFragment(мне переходить в него надо) -
-//        это я нашел в интернете способ, но у меня он благоолучно не работает(вылетает на моменте когда обратно возвращаюсь)
-
-
+        uri = arguments?.getString("Uri_string")
+        name = arguments?.getString("Edit_text")
 
 
         val context = requireContext()
@@ -53,10 +49,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         flag = savedInstanceState?.getBoolean("Uri_boolean") == true
 
+
+        if (uri != null) binding?.imageView?.setImageURI(Uri.parse(uri))
+
+
+        if ((savedInstanceState?.getString("Uri_string") != null) && (flag)) {
+            uri = savedInstanceState.getString("Uri_string")
+        }
+
         if (flag) {
             selectedImageUri = Uri.parse(savedInstanceState?.getString("Uri_string"))
             binding?.imageView?.setImageURI(selectedImageUri)
         }
+
+
+        if (name != null) binding?.nameUser?.setText(name)
+
 
         binding?.run {
             lifecycleScope.launch{
@@ -87,8 +95,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 imageChooser();
             })
 
+
             infoButton.setOnClickListener{
-                findNavController().navigate(resId = R.id.action_profileFragment_to_infoFragment)
+                bundle.putString("Uri_string",uri)
+                bundle.putString("Edit_text",binding?.nameUser?.text.toString())
+                findNavController().navigate(resId = R.id.action_profileFragment_to_infoFragment,bundle)
             }
         }
     }
@@ -111,6 +122,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 if (null != selectedImageUri) {
                     binding?.imageView?.setImageURI(selectedImageUri)
                     flag = true
+                    uri = selectedImageUri.toString()
                 }
             }
         }
