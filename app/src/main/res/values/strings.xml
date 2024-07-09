@@ -21,9 +21,7 @@
     <string name="CreatePlant">Создание растения</string>
     <string name="Description">Описание</string>
     <string name="PlantDescription">Введите описание</string>
-    <string name="WateringFrequency">Как часто надо поливать?</string>
-    <string name="Water">Поливать</string>
-    <string name="Counts">раз в&#160;</string>
+    <string name="Water">Раз в сколько дней поливать?</string>
     <string name="SunType">Какой свет любит?</string>
     <string name="Create">Создать</string>
     <string name="Developers">Разработчики</string>
