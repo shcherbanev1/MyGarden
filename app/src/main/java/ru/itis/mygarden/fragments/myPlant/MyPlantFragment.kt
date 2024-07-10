@@ -1,5 +1,7 @@
 package ru.itis.mygarden.fragments.myPlant
 
+
+import java.util.Calendar
 import android.content.Context.MODE_PRIVATE
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -111,6 +113,7 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
         val triggerAtMillis = System.currentTimeMillis() + delayMillis
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent)
     }

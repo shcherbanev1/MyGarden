@@ -29,10 +29,9 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         super.onViewCreated(view, savedInstanceState)
         val context = requireContext()
         binding = FragmentPlantBinding.bind(view)
-        viewModel = ViewModelProvider(this, PlantViewModelFactory(context)).get(PlantViewModel::class.java)
+        viewModel = ViewModelProvider(this, PlantViewModelFactory(context))[PlantViewModel::class.java]
         lifecycleScope.launch {
             plantsList = viewModel.getAllPlants()
-            println(1)
             initAdapter()
         }
         initViews()
