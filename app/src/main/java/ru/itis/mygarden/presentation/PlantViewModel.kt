@@ -2,7 +2,9 @@ package ru.itis.mygarden.presentation
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +19,8 @@ import ru.itis.mygarden.data.UserDao
 import java.lang.ref.WeakReference
 import ru.itis.mygarden.data.api.ApiPlantInfoHandler
 import ru.itis.mygarden.exception.PlantNotFoundException
+import ru.itis.mygarden.util.Translator
+import ru.itis.mygarden.util.TranslatorENtoRU
 
 class PlantViewModel(context: Context) : ViewModel() {
 
@@ -64,6 +68,15 @@ class PlantViewModel(context: Context) : ViewModel() {
 
     fun addPlant(plant: Plant) {
         viewModelScope.launch(Dispatchers.IO) {
+            val translator = TranslatorENtoRU(viewModelScope)
+            val deferredTranslation = CompletableDeferred<String>()
+
+            translator.translate(plant.name) { translatedText ->
+                deferredTranslation.complete(translatedText)
+            }
+
+            val translatedText = deferredTranslation.await()
+            plant.name = "  $translatedText  "
             plantDao.insertPlant(plant)
         }
     }
