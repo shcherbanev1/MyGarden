@@ -1,5 +1,6 @@
 package ru.itis.mygarden.data
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -8,6 +9,7 @@ import androidx.core.app.NotificationManagerCompat
 import ru.itis.mygarden.R
 
 class NotificationReceiver : BroadcastReceiver() {
+    @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
         val notificationText = intent.getStringExtra("notification_text")
         // Создание уведомления
