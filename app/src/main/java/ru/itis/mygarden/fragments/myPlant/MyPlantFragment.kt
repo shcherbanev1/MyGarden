@@ -77,11 +77,8 @@ class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
                 }
 
                 buttonWatering.setOnClickListener {
-                    scheduleNotification(
-                        plantImg.context,
-                        86400000 * plant?.wateringFrequency as Long
-                    )
-                    pour.setBackgroundColor(context.getColor(R.color.dark_green))
+                    scheduleNotification(plantImg.context, ((86400000 * plant?.wateringFrequency!!).toLong()))
+                    pour.setBackgroundColor(context.getColor(R.color.green))
                     sharedPreferences.edit()
                         .putBoolean("${plant?.id}_isWateringButtonGreen", true)
                         .apply()

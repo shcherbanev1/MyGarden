@@ -30,7 +30,7 @@ class PlantHolder(
                 val sharedPreferences = itemView.context.getSharedPreferences("PlantColors", MODE_PRIVATE)
                 val isWateringButtonGreen = sharedPreferences.getBoolean("${plant.id}_isWateringButtonGreen", false)
                 pour.setBackgroundColor(
-                    if (isWateringButtonGreen) itemView.context.getColor(R.color.dark_green)
+                    if (isWateringButtonGreen) itemView.context.getColor(R.color.green)
                     else itemView.context.getColor(R.color.orange)
                 )
                 if (Instant.now().toEpochMilli() > plant.nextWateringTime!!){
