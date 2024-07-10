@@ -13,10 +13,10 @@ data class Plant(
     var name: String,
 
     @ColumnInfo(name = "description")
-    val description: String?,
+    var description: String?,
 
     @ColumnInfo(name = "light_preference")
-    val sunlight: String?,
+    var sunlight: String?,
 
     @ColumnInfo(name = "next_watering_time")
     var nextWateringTime: Long?,

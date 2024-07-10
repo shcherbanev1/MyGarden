@@ -69,14 +69,36 @@ class PlantViewModel(context: Context) : ViewModel() {
     fun addPlant(plant: Plant) {
         viewModelScope.launch(Dispatchers.IO) {
             val translator = TranslatorENtoRU(viewModelScope)
-            val deferredTranslation = CompletableDeferred<String>()
+
+            val deferredNameTranslation = CompletableDeferred<String>()
+            val deferredDescriptionTranslation = CompletableDeferred<String>()
+            val deferredSunlightTranslation = CompletableDeferred<String>()
 
             translator.translate(plant.name) { translatedText ->
-                deferredTranslation.complete(translatedText)
+                deferredNameTranslation.complete(translatedText)
+            }
+            plant.description?.let {
+                translator.translate(it) { translatedText ->
+                    deferredDescriptionTranslation.complete(translatedText)
+                }
             }
 
-            val translatedText = deferredTranslation.await()
-            plant.name = "  $translatedText  "
+            // Translate plant sunlight
+            plant.sunlight?.let {
+                translator.translate(it.replace("_", " ")) { translatedText ->
+                    deferredSunlightTranslation.complete(translatedText)
+                }
+            }
+
+            // Await all translations
+            val translatedName = deferredNameTranslation.await()
+            val translatedDescription = deferredDescriptionTranslation.await()
+            val translatedSunlight = deferredSunlightTranslation.await()
+
+            // Update plant object with translated values
+            plant.name = "  $translatedName  "
+            plant.description = translatedDescription
+            plant.sunlight = translatedSunlight
             plantDao.insertPlant(plant)
         }
     }
