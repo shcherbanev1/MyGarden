@@ -27,11 +27,17 @@ import ru.itis.mygarden.presentation.PlantViewModelFactory
 import java.time.Instant
 
 
-class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
+class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
     private var binding: FragmentMyPlantBinding? = null
     private var plant: Plant? = null
-    private var plantsList: List<Plant>? = null
     private lateinit var viewModel: PlantViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val context = requireContext()
+        viewModel =
+            ViewModelProvider(this, PlantViewModelFactory(context)).get(PlantViewModel::class.java)
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,41 +48,51 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
         val context = requireContext()
         val sharedPreferences = context.getSharedPreferences("PlantColors", MODE_PRIVATE)
         val id = arguments?.getInt("ARG_ID")
-        ViewModelProvider(this, PlantViewModelFactory(context)).get(PlantViewModel::class.java)
         lifecycleScope.launch {
-           plantsList = viewModel.getAllPlants()
-        }
-        plant = plantsList?.find{it.id == id}
-        binding?.run {
+            val plantsList = viewModel.getAllPlants()
+            plant = plantsList.find { it.id == id }
 
-            var currentTime = getCurrentTimeMillis()
-            if ( currentTime > plant?.nextWateringTime!!){
-                pour.setBackgroundColor(context.getColor(R.color.orange))
-                sharedPreferences.edit()
-                    .putBoolean("${plant!!.id}_isWateringButtonGreen", false)
-                    .apply()
-            }
+            binding?.run {
 
-            buttonWatering.setOnClickListener {
-                scheduleNotification(plantImg.context, 86400000*plant?.wateringFrequency as Long)
-                pour.setBackgroundColor(context.getColor(R.color.dark_green))
-                sharedPreferences.edit()
-                    .putBoolean("${plant?.id}_isWateringButtonGreen", true)
-                   .apply()
-                //viewModel.updateNextWateringTime(plant)
-            }
-            namePlantText.text = plant?.name
-            description.text = plant?.description
-            valueLight.text = plant?.sunlight
-            valueWatering.text = "${plant?.wateringFrequency}"
-            Glide.with(this@MyPlantFragment)
-                .load(plant?.imgSource)
-                .error(R.drawable.not_found_plant)
-                .into(plantImg)
+                namePlantText.text = plant?.name
+                description.text = plant?.description
+                valueLight.text = plant?.sunlight
+                if (plant?.wateringFrequency == -1) {
+                    valueWatering.text = "no info"
+                } else {
+                    valueWatering.text = "${plant?.wateringFrequency}"
+                }
+                Glide.with(this@MyPlantFragment)
+                    .load(plant?.imgSource)
+                    .error(R.drawable.not_found_plant)
+                    .into(plantImg)
 
 
-            backButton.setOnClickListener {
-                findNavController().navigate(R.id.action_myPlantFragment_to_plantFragment)
+                var currentTime = getCurrentTimeMillis()
+                if (currentTime > (plant?.nextWateringTime ?: 0)) {
+                    pour.setBackgroundColor(context.getColor(R.color.orange))
+                    sharedPreferences.edit()
+                        .putBoolean("${plant?.id}_isWateringButtonGreen", false)
+                        .apply()
+                }
+
+                buttonWatering.setOnClickListener {
+                    scheduleNotification(
+                        plantImg.context,
+                        86400000 * plant?.wateringFrequency as Long
+                    )
+                    pour.setBackgroundColor(context.getColor(R.color.dark_green))
+                    sharedPreferences.edit()
+                        .putBoolean("${plant?.id}_isWateringButtonGreen", true)
+                        .apply()
+                    //viewModel.updateNextWateringTime(plant)
+                }
+
+
+
+                backButton.setOnClickListener {
+                    findNavController().navigate(R.id.action_myPlantFragment_to_plantFragment)
+                }
             }
         }
     }
@@ -104,7 +120,8 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
         val intent = Intent(context, NotificationReceiver::class.java).apply {
             putExtra("notification_text", plant?.name)
         }
-        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent =
+            PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
