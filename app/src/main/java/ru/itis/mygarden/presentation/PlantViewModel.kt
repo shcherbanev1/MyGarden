@@ -46,12 +46,9 @@ class PlantViewModel(context: Context) : ViewModel() {
 
     fun updateUser(name : String, imagePath : String) {
         viewModelScope.launch {
-            println("kek3")
             userStateFlow.value?.let {
-                println("kek is not null")
                 return@launch userDao.updateUser(it.copy(name = name, imagePath = imagePath))
             }
-            println("it is null")
             userDao.updateUser(User(
                 id = 1,
                 name = name,
