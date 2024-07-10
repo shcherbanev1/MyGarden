@@ -10,6 +10,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import ru.itis.mygarden.exception.PlantNotFoundException
+import ru.itis.mygarden.util.Translator
 import java.util.Locale
 
 class ApiPlantInfoHandler(private val plantName: String) {

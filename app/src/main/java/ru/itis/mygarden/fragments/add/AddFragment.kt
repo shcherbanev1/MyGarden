@@ -28,9 +28,10 @@ class AddFragment : Fragment(R.layout.fragment_add) {
         viewModel = ViewModelProvider(this, PlantViewModelFactory(context))[PlantViewModel::class.java]
         binding?.run {
             searchButton.setOnClickListener {
+
                 translator.translate(enteringText.text.toString()) { translatedText ->
                     lifecycleScope.launch {
-                        println(1)
+                        Toast.makeText(context, "Растение добавляется, пожалуйста подождите", Toast.LENGTH_LONG).show()
                         if (!viewModel.addPlantFromApi(translatedText))
                             Toast.makeText(context, "Такого растения нет( Попробуйте добавить самостоятельно", Toast.LENGTH_LONG).show()
                         else
