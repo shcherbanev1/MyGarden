@@ -97,7 +97,6 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
         )[PlantViewModel::class.java]
 
 
-        println("TEST TAG: id++ = $id")
         val name = binding!!.etName.text.toString()
         val description = binding!!.evDescription.text.toString()
         var sunlight = ""
@@ -110,36 +109,19 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
         }
         val wateringFrequency = binding!!.etFrequency.text.toString().toInt()
         val imgSource = uri
-        val curUnixTime = System.currentTimeMillis() / 1000
-        val nextWateringTime = curUnixTime + wateringFrequency * 24 * 60 * 60
+        val curUnixTime = System.currentTimeMillis()
+        val nextWateringTime = curUnixTime + wateringFrequency * 86400 * 1000
 
-        var id: Int
-
-        lifecycleScope.launch {
-            var idL = 12000
-            val list = viewModel.getAllPlants()
-//            println("TEST TAG: $list")
-            for (i in list) {
-//                println("TEST TAG: $i")
-                if (idL < i.id) {
-                    idL = i.id
-                }
-                println("TEST TAG: id=${i.id}")
-            }
-            id = idL + 1
-            val newPlant = Plant(
-                id = id,
-                name = name,
-                description = description,
-                sunlight = sunlight,
-                wateringFrequency = wateringFrequency,
-                imgSource = imgSource,
-                nextWateringTime = nextWateringTime
-            )
-            viewModel.addPlant(newPlant)
-//            println("TEST TAG: $id")
-        }
-
+        val newPlant = Plant(
+            id = 0,
+            name = name,
+            description = description,
+            sunlight = sunlight,
+            wateringFrequency = wateringFrequency,
+            imgSource = imgSource,
+            nextWateringTime = nextWateringTime
+        )
+        viewModel.addPlant(newPlant)
     }
 
 
