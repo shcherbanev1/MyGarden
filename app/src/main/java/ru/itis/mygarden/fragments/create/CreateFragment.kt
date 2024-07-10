@@ -1,15 +1,13 @@
 package ru.itis.mygarden.fragments.create
 
 import android.os.Bundle
-import android.widget.ArrayAdapter;
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.itis.mygarden.R
 import ru.itis.mygarden.data.Plant
@@ -79,7 +77,6 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
                 .toInt() >= 0 && binding!!.spinnerSun.selectedItem.toString() != "выбрать"
         ) {
             makeNewPlant()
-
         } else {
             binding?.let {
                 Snackbar.make(
@@ -97,18 +94,8 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
             PlantViewModelFactory(requireContext())
         )[PlantViewModel::class.java]
 
-        var id = 0
 
-        lifecycleScope.launch {
-            val list = viewModel.getAllPlants()
-            for (i in list) {
-                if (id < i.id) {
-                    id = i.id
-                }
-            }
-        }
-
-        id++
+        println("TEST TAG: id++ = $id")
         val name = binding!!.etName.text.toString()
         val description = binding!!.evDescription.text.toString()
         var sunlight = ""
@@ -124,26 +111,32 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
         val curUnixTime = System.currentTimeMillis() / 1000
         val nextWateringTime = curUnixTime + wateringFrequency * 24 * 60 * 60
 
-        val newPlant = Plant(
-            id = id,
-            name = name,
-            description = description,
-            sunlight = sunlight,
-            wateringFrequency = wateringFrequency,
-            imgSource = imgSource,
-            nextWateringTime = nextWateringTime
-        )
-
-        println("TEST TAG: $newPlant")
-
+        var id: Int
 
         lifecycleScope.launch {
+            var idL = 12000
+            val list = viewModel.getAllPlants()
+//            println("TEST TAG: $list")
+            for (i in list) {
+//                println("TEST TAG: $i")
+                if (idL < i.id) {
+                    idL = i.id
+                }
+                println("TEST TAG: id=${i.id}")
+            }
+            id = idL + 1
+            val newPlant = Plant(
+                id = id,
+                name = name,
+                description = description,
+                sunlight = sunlight,
+                wateringFrequency = wateringFrequency,
+                imgSource = imgSource,
+                nextWateringTime = nextWateringTime
+            )
             viewModel.addPlant(newPlant)
+//            println("TEST TAG: $id")
         }
-
-        findNavController().navigate(
-            resId = R.id.action_createFragment_to_plantFragment,
-        )
 
     }
 
