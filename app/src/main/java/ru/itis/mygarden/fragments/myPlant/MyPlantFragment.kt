@@ -1,6 +1,7 @@
 package ru.itis.mygarden.fragments.myPlant
 
 
+import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -68,7 +69,16 @@ class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
 
 
                 var currentTime = getCurrentTimeMillis()
-                if (currentTime > (plant?.nextWateringTime ?: 0)) {
+                if (currentTime < (plant?.nextWateringTime!!)) {
+                    println(currentTime)
+                    println(plant?.nextWateringTime)
+                    pour.setBackgroundColor(context.getColor(R.color.green))
+                    sharedPreferences.edit()
+                        .putBoolean("${plant?.id}_isWateringButtonGreen", true)
+                        .apply()
+                } else {
+                    println(currentTime)
+                    println(plant?.nextWateringTime)
                     pour.setBackgroundColor(context.getColor(R.color.orange))
                     sharedPreferences.edit()
                         .putBoolean("${plant?.id}_isWateringButtonGreen", false)
@@ -76,12 +86,12 @@ class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
                 }
 
                 buttonWatering.setOnClickListener {
-                    scheduleNotification(plantImg.context, ((86400000 * plant?.wateringFrequency!!).toLong()))
+                    viewModel.updateNextWateringTime(plant!!)
+                    scheduleNotification(plantImg.context, ((86400 * 1000 * plant?.wateringFrequency!!).toLong()))
                     pour.setBackgroundColor(context.getColor(R.color.green))
                     sharedPreferences.edit()
                         .putBoolean("${plant?.id}_isWateringButtonGreen", true)
                         .apply()
-                    //viewModel.updateNextWateringTime(plant)
                 }
 
                 backButton.setOnClickListener {
@@ -115,12 +125,13 @@ class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
         }
     }
 
+    @SuppressLint("ScheduleExactAlarm")
     fun scheduleNotification(context: Context, delayMillis: Long) {
         val intent = Intent(context, NotificationReceiver::class.java).apply {
             putExtra("notification_text", plant?.name)
         }
         val pendingIntent =
-            PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
