@@ -53,7 +53,6 @@ class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
             plant = plantsList.find { it.id == id }
 
             binding?.run {
-
                 namePlantText.text = plant?.name
                 description.text = plant?.description
                 valueLight.text = plant?.sunlight
@@ -85,9 +84,12 @@ class MyPlantFragment : Fragment(R.layout.fragment_my_plant) {
                     //viewModel.updateNextWateringTime(plant)
                 }
 
-
-
                 backButton.setOnClickListener {
+                    findNavController().navigate(R.id.action_myPlantFragment_to_plantFragment)
+                }
+
+                deleteButton.setOnClickListener {
+                    plant?.let { it1 -> viewModel.deletePlant(it1) }
                     findNavController().navigate(R.id.action_myPlantFragment_to_plantFragment)
                 }
             }
