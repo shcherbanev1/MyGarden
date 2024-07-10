@@ -33,12 +33,26 @@ class PlantHolder(
                     if (isWateringButtonGreen) itemView.context.getColor(R.color.green)
                     else itemView.context.getColor(R.color.orange)
                 )
-                if (Instant.now().toEpochMilli() > plant.nextWateringTime!!){
+                var currentTime = getCurrentTimeMillis()
+                if (currentTime < (plant?.nextWateringTime!!)) {
+                    println(currentTime)
+                    println(plant?.nextWateringTime)
+                    pour.setBackgroundColor(itemView.context.getColor(R.color.green))
+                    sharedPreferences.edit()
+                        .putBoolean("${plant?.id}_isWateringButtonGreen", true)
+                        .apply()
+                } else {
+                    println(currentTime)
+                    println(plant?.nextWateringTime)
                     pour.setBackgroundColor(itemView.context.getColor(R.color.orange))
                     sharedPreferences.edit()
-                        .putBoolean("${plant.id}_isWateringButtonGreen", false)
+                        .putBoolean("${plant?.id}_isWateringButtonGreen", false)
                         .apply()
                 }
             }
+        }
+
+        private fun getCurrentTimeMillis(): Long {
+            return System.currentTimeMillis()
         }
 }
