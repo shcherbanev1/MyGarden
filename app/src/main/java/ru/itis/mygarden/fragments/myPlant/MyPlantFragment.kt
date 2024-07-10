@@ -32,10 +32,11 @@ import java.time.Instant
 
 
 class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
-     private var binding: FragmentMyPlantBinding? = null
-     private val plant: Plant? = null
+    private var binding: FragmentMyPlantBinding? = null
+    private var plant: Plant? = null
     private var plantsList: List<Plant>? = null
     private lateinit var viewModel: PlantViewModel
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,11 +56,12 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
             if ( currentTime > plant?.nextWateringTime!!){
                 pour.setBackgroundColor(context.getColor(R.color.orange))
                 sharedPreferences.edit()
-                    .putBoolean("${plant.id}_isWateringButtonGreen", false)
+                    .putBoolean("${plant!!.id}_isWateringButtonGreen", false)
                     .apply()
             }
 
             buttonWatering.setOnClickListener {
+                scheduleNotification(plantImg.context, 86400000*plant?.wateringFrequency as Long)
                 pour.setBackgroundColor(context.getColor(R.color.dark_green))
                 sharedPreferences.edit()
                     .putBoolean("${plant?.id}_isWateringButtonGreen", true)
@@ -85,19 +87,7 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getCurrentTimeMillis(): Long {
         return Instant.now().toEpochMilli()
-
-    
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMyPlantBinding.bind(view)
-        createNotificationChannel()
-        binding?.run {
-            buttonWatering.setOnClickListener{
-                scheduleNotification(plantImg.context, 86400000*plant?.wateringFrequency as Long)
-            }
-        }
-        }
+    }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
