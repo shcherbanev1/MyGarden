@@ -77,10 +77,11 @@
         app:layout_constraintTop_toBottomOf="@id/sun_item"
         app:layout_constraintStart_toStartOf="@id/shape_high"
         app:layout_constraintEnd_toEndOf="@id/shape_high"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/description_light"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        tools:text="Умеренный"
+        android:textSize="12sp"
+        tools:text="Полное солнце"
         android:textStyle="bold"/>
 
     <TextView

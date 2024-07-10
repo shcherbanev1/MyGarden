@@ -86,12 +86,18 @@ class PlantViewModel(context: Context) : ViewModel() {
             // Update plant object with translated values
             plant.name = "  ${translatedName.replaceFirstChar { it.uppercaseChar() }}  "
             plant.description = translatedDescription
-            plant.sunlight = when (plant.sunlight) {
-                "full_sun" -> "Полное солнце"
-                "part_shade" -> "Частичная тень"
-                "sun-part_shade" -> "Любое"
-                "full_shade" -> "Тень"
-                else -> "Неизвестные условия освещения"}
+            println(plant.sunlight)
+
+            if (plant.sunlight?.contains("full_sun") == true)
+                plant.sunlight = "Полное солнце"
+            else if (plant.sunlight?.contains("part_shade") == true)
+                plant.sunlight = "Частичная тень"
+            else if (plant.sunlight?.contains("sun-part_shade") == true)
+                plant.sunlight = "Любое"
+            else if (plant.sunlight?.contains("full_shade") == true)
+                plant.sunlight = "Тень"
+            else
+                plant.sunlight = "Неизвестно"
             plantDao.insertPlant(plant)
         }
     }
