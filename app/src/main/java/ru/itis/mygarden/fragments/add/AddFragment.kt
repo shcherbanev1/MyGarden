@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import ru.itis.mygarden.R
@@ -37,6 +38,9 @@ class AddFragment : Fragment(R.layout.fragment_add) {
                     }
                 }
 
+            }
+            buttonAdding.setOnClickListener{
+                findNavController().navigate(resId = R.id.action_addFragment_to_createFragment)
             }
         }
     }

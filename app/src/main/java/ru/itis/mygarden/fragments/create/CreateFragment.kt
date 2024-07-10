@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import ru.itis.mygarden.R
@@ -77,6 +78,7 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
                 .toInt() >= 0 && binding!!.spinnerSun.selectedItem.toString() != "выбрать"
         ) {
             makeNewPlant()
+            findNavController().navigate(resId = R.id.action_createFragment_to_plantFragment)
         } else {
             binding?.let {
                 Snackbar.make(
