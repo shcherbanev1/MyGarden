@@ -72,7 +72,6 @@ class PlantViewModel(context: Context) : ViewModel() {
 
             val deferredNameTranslation = CompletableDeferred<String>()
             val deferredDescriptionTranslation = CompletableDeferred<String>()
-            val deferredSunlightTranslation = CompletableDeferred<String>()
 
             translator.translate(plant.name) { translatedText ->
                 deferredNameTranslation.complete(translatedText)
@@ -83,22 +82,13 @@ class PlantViewModel(context: Context) : ViewModel() {
                 }
             }
 
-            // Translate plant sunlight
-            plant.sunlight?.let {
-                translator.translate(it.replace("_", " ")) { translatedText ->
-                    deferredSunlightTranslation.complete(translatedText)
-                }
-            }
-
             // Await all translations
             val translatedName = deferredNameTranslation.await()
             val translatedDescription = deferredDescriptionTranslation.await()
-            val translatedSunlight = deferredSunlightTranslation.await()
 
             // Update plant object with translated values
-            plant.name = "  $translatedName  "
+            plant.name = "  ${translatedName.replaceFirstChar { it.uppercaseChar() }}  "
             plant.description = translatedDescription
-            plant.sunlight = translatedSunlight
             plantDao.insertPlant(plant)
         }
     }
