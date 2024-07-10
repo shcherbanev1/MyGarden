@@ -50,9 +50,10 @@ class ApiPlantInfoHandler(private val plantName: String) {
             "frequent" -> 1
             "average" -> 2
             "minimum" -> 7
-            else -> null
+            "upgrade plans to premium/supreme - https://perenual.com/subscription-api-pricing. i'm sorry" -> -1
+            else -> 2
         }
-        val nextWateringTime = wateringFrequency?.let {
+        val nextWateringTime = wateringFrequency.let {
             System.currentTimeMillis() + it * 86400 * 1000
         }
 
