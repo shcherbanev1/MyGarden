@@ -48,8 +48,25 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         tools:text="Какое-то большое описание растения, что оно там из семейства кактусовых или что-то типо того" />
-
     </ScrollView>
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Material3.Button.Icon"
+        app:icon="@drawable/baseline_delete_24"
+        app:iconSize="24dp"
+        app:iconGravity="textEnd"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/orange"
+        android:text="@string/Delete"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/plant_img"
+        />
+
     <ImageView
         android:id="@+id/shape_high"
         android:layout_width="92dp"

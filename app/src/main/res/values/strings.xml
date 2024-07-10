@@ -32,4 +32,5 @@
     <string name="hyperlinkDev5"><a href="https://github.com/pashtevlenti">pashtevlenti</a></string>
     <string name="Version">version:&#160;</string>
     <string name="versionId">0.0.1</string>
+    <string name="Delete">Удалить</string>
 </resources>
