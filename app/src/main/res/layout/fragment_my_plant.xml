@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="@id/shape_high"
         app:layout_constraintTop_toBottomOf="@id/value_light"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="8sp"
         android:text="@string/light" />
 
 
@@ -113,7 +113,7 @@
     <TextView
         android:id="@+id/value_watering"
         android:layout_width="wrap_content"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/shape_low"
         app:layout_constraintStart_toStartOf="@id/shape_low"
@@ -128,7 +128,7 @@
         android:id="@+id/description_watering"
         android:layout_width="wrap_content"
         android:layout_marginBottom="4dp"
-        android:textSize="12sp"
+        android:textSize="8sp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/shape_low"
         app:layout_constraintStart_toStartOf="@id/shape_low"
@@ -143,7 +143,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="12dp"
-        android:foreground="@drawable/button_watering"
+        android:backgroundTint="@color/orange"
         app:layout_constraintBottom_toTopOf="@id/text_watering"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -182,6 +182,7 @@
         app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <ImageView
+        android:id="@+id/back_button"
         android:layout_width="44dp"
         android:layout_height="36dp"
         android:layout_marginStart="4dp"

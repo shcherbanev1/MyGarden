@@ -41,6 +41,7 @@ android {
 dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.common)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation("io.ktor:ktor-client-core:2.3.0")
