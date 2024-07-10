@@ -78,5 +78,8 @@
         <action
             android:id="@+id/action_createFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_createFragment_to_plantFragment"
+            app:destination="@id/plantFragment" />
     </fragment>
 </navigation>

@@ -28,7 +28,7 @@ class AddFragment : Fragment(R.layout.fragment_add) {
         viewModel = ViewModelProvider(this, PlantViewModelFactory(context))[PlantViewModel::class.java]
         binding?.run {
             searchButton.setOnClickListener {
-
+                Toast.makeText(context, "Подключение к API", Toast.LENGTH_LONG).show()
                 translator.translate(enteringText.text.toString()) { translatedText ->
                     lifecycleScope.launch {
                         Toast.makeText(context, "Растение добавляется, пожалуйста подождите", Toast.LENGTH_LONG).show()

@@ -14,6 +14,8 @@
         android:layout_height="317dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/tool_plant" />
@@ -30,19 +32,24 @@
         android:textStyle="bold"
         android:textColor="@color/white"/>
 
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="348dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="350dp"
+        android:layout_height="120dp"
+        android:scrollbars="vertical"
+        android:layout_marginTop="9dp"
         app:layout_constraintStart_toStartOf="@id/name_plant_text"
         app:layout_constraintTop_toBottomOf="@id/name_plant_text"
+        android:fillViewport="true">
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         tools:text="Какое-то большое описание растения, что оно там из семейства кактусовых или что-то типо того" />
 
-
+    </ScrollView>
     <ImageView
         android:id="@+id/shape_high"
         android:layout_width="92dp"
@@ -147,7 +154,7 @@
         app:layout_constraintBottom_toTopOf="@id/text_watering"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description"/>
+        app:layout_constraintTop_toBottomOf="@id/SCROLLER_ID"/>
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
