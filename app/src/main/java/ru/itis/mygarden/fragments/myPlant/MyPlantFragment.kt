@@ -1,7 +1,6 @@
 package ru.itis.mygarden.fragments.myPlant
 
 
-import java.util.Calendar
 import android.content.Context.MODE_PRIVATE
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -13,20 +12,15 @@ import kotlinx.coroutines.launch
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Intent
-import java.util.Calendar
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import ru.itis.mygarden.MainActivity
 import ru.itis.mygarden.R
 import ru.itis.mygarden.data.NotificationReceiver
 import ru.itis.mygarden.data.Plant
-import ru.itis.mygarden.databinding.FragmentInfoBinding
 import ru.itis.mygarden.databinding.FragmentMyPlantBinding
 import ru.itis.mygarden.presentation.PlantViewModel
 import ru.itis.mygarden.presentation.PlantViewModelFactory
