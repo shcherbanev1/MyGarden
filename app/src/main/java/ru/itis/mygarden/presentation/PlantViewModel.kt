@@ -125,7 +125,8 @@ class PlantViewModel(context: Context) : ViewModel() {
     }
 
     fun updateNextWateringTime(plant: Plant) {
-        plant.nextWateringTime = System.currentTimeMillis() + plant.wateringFrequency * 86400 * 1000
+        plant.nextWateringTime = System.currentTimeMillis() + plant.wateringFrequency * 84000 * 1000
+        updatePlant(plant)
     }
 
 }
