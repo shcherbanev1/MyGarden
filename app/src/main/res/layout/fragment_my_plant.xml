@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@id/value_light"/>
     <TextView
         android:id="@+id/value_light"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/sun_item"
         app:layout_constraintStart_toStartOf="@id/shape_high"
