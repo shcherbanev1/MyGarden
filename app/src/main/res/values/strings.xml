@@ -11,7 +11,7 @@
     <string name="UserName">Имя пользователя:</string>
     <string name="theNumberOfYourPlants">Количество ваших растений:</string>
     <string name="watering">Полить</string>
-    <string name="before_watering">до полива</string>
+    <string name="before_watering">частота полива</string>
     <string name="light">свет</string>
     <string name="make_plant">Создать своё</string>
     <string name="enter_name">Введите название растения</string>
