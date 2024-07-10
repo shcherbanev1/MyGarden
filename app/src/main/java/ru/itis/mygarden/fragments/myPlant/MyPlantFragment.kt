@@ -42,6 +42,7 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMyPlantBinding.bind(view)
         super.onCreate(savedInstanceState)
+        createNotificationChannel()
         val context = requireContext()
         val sharedPreferences = context.getSharedPreferences("PlantColors", MODE_PRIVATE)
         val id = arguments?.getInt("ARG_ID")
@@ -110,8 +111,6 @@ class MyPlantFragment: Fragment(R.layout.fragment_my_plant) {
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        // Установите время срабатывания уведомления через delayMillis миллисекунд
         val triggerAtMillis = System.currentTimeMillis() + delayMillis
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent)
     }
