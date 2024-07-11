@@ -34,7 +34,7 @@ class AddFragment : Fragment(R.layout.fragment_add) {
                         if (!viewModel.addPlantFromApi(translatedText))
                             Toast.makeText(context, "Такого растения нет( Попробуйте добавить самостоятельно", Toast.LENGTH_LONG).show()
                         else
-                            Toast.makeText(context, "Рстение успешно добавлено", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "Растение успешно добавлено", Toast.LENGTH_LONG).show()
                     }
                 }
 
