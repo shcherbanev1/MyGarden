@@ -12,7 +12,7 @@ import kotlin.coroutines.resumeWithException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-class Translator(private val scope: CoroutineScope) {
+class TranslatorRUtoEN(private val scope: CoroutineScope) {
     private lateinit var englishRussianTranslator: Translator
 
     init {

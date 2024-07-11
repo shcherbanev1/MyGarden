@@ -8,17 +8,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import ru.itis.mygarden.R
 import ru.itis.mygarden.databinding.FragmentAddBinding
 import ru.itis.mygarden.presentation.PlantViewModel
 import ru.itis.mygarden.presentation.PlantViewModelFactory
-import ru.itis.mygarden.util.Translator
+import ru.itis.mygarden.util.TranslatorRUtoEN
 
 class AddFragment : Fragment(R.layout.fragment_add) {
 
     private var binding: FragmentAddBinding? = null
-    private val translator: Translator = Translator(lifecycleScope)
+    private val translatorRUtoEN: TranslatorRUtoEN = TranslatorRUtoEN(lifecycleScope)
     private lateinit var viewModel: PlantViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,7 +28,7 @@ class AddFragment : Fragment(R.layout.fragment_add) {
         binding?.run {
             searchButton.setOnClickListener {
                 Toast.makeText(context, "Подключение к API", Toast.LENGTH_LONG).show()
-                translator.translate(enteringText.text.toString()) { translatedText ->
+                translatorRUtoEN.translate(enteringText.text.toString()) { translatedText ->
                     lifecycleScope.launch {
                         Toast.makeText(context, "Растение добавляется, пожалуйста подождите", Toast.LENGTH_LONG).show()
                         if (!viewModel.addPlantFromApi(translatedText))

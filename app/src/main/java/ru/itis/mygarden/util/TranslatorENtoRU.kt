@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class TranslatorENtoRU(private val scope: CoroutineScope) {
-    private lateinit var englishRussianTranslator: Translator
+    private var englishRussianTranslator: Translator
 
     init {
         val options = TranslatorOptions.Builder()

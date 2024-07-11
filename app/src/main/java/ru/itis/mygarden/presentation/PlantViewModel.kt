@@ -2,11 +2,9 @@ package ru.itis.mygarden.presentation
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +17,6 @@ import ru.itis.mygarden.data.UserDao
 import java.lang.ref.WeakReference
 import ru.itis.mygarden.data.api.ApiPlantInfoHandler
 import ru.itis.mygarden.exception.PlantNotFoundException
-import ru.itis.mygarden.util.Translator
 import ru.itis.mygarden.util.TranslatorENtoRU
 
 class PlantViewModel(context: Context) : ViewModel() {
